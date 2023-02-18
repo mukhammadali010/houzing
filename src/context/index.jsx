@@ -6,9 +6,9 @@ const Root = createContext();
 
 const RootContext = ({ children }) => {
   return (
-    <Root.Provider>
+    <>
       <PropertiesProvider>{children}</PropertiesProvider>
-    </Root.Provider>
+    </>
   );
 };
 

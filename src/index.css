@@ -4,8 +4,19 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-family: 'Roboto', sans-serif;
 }
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  /* colors */
+  --colorPrimary: #0d263b;
+  --colorSecondary: #696969;
+
+  /* background */
+  --backgroundPrimary: #0061DF;
+  --padding: 5px 130px;
 }

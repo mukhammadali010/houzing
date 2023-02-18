@@ -4,8 +4,8 @@ import { reducer } from './reducer';
 const PropertiesContext = createContext();
 
 const PropertiesProvider = ({ children }) => {
-    [state , dispatch] = useReducer(reducer, [])
-  return <PropertiesContext.Provider>{children}</PropertiesContext.Provider>;
+  const  [state , dispatch] = useReducer(reducer, [])
+  return <PropertiesContext.Provider value={[state , dispatch]}>{children}</PropertiesContext.Provider>;
 };
 
 export default PropertiesProvider;
