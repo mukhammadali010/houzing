@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from './style'
 
-const Button = ({
+const Input = ({
         type,
         width,
         height,
@@ -11,13 +11,11 @@ const Button = ({
         ml,
         gap,
         padding,
-        children,
-        onclick
 }) => {
 
   return (
     <Container 
-    type={type}
+    // type={type}
     width = {width}
     height ={height}
     mt = {mt}
@@ -26,11 +24,8 @@ const Button = ({
     ml = {ml}
     gap ={gap}
     padding ={padding}
-    onClick={onclick}
-    >
-     {children}
-    </Container>
+    />
   )
 }
 
-export default Button
+export default Input

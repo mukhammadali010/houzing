@@ -27,22 +27,16 @@ const getType = ({ type }) => {
       };
   }
 };
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+const Container = styled.input`
   padding: 12px 40px;
   gap: ${({ gap }) => (gap ? `${gap}px` : "10px")};
-  width: ${({ width }) => (width ? `${width}px` : "fit-content")};
+  width: ${({ width }) => (width ? `${width}px` : "100%")};
   height: ${({ height }) => (height ? `${height}px` : "44px")};
-  cursor: pointer;
+  border: 1px solid #E6E9EC;
   border-radius: 2px;
-  ${getType}
+  /* ${getType} */
+  outline:none;
 
-  &:active{
-    transform:scale(.97);
-    opacity: 0.7;
-  }
+
 `;
 export { Container };
