@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "../components/Home/Navbar";
+import Navbar from "../components/Navbar";
 import { navbar } from "../utils/navbar";
 
 const Root = () => {

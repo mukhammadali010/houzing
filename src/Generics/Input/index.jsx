@@ -1,31 +1,40 @@
-import React from 'react'
-import { Container } from './style'
+import React, { forwardRef } from "react";
+import { Container } from "./style";
 
-const Input = ({
-        type,
-        width,
-        height,
-        mt,
-        mb,
-        mr,
-        ml,
-        gap,
-        padding,
-}) => {
+export const Input = forwardRef(
+  (
+    {
+      type,
+      width,
+      height,
+      mt,
+      mb,
+      mr,
+      ml,
+      gap,
+      padding,
+      placeholder,
+      onChange,
+    },
+    ref
+  ) => {
+    return (
+      <Container
+        type={type}
+        ref={ref}
+        width={width}
+        height={height}
+        mt={mt}
+        mb={mb}
+        mr={mr}
+        ml={ml}
+        gap={gap}
+        padding={padding}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+    );
+  }
+);
 
-  return (
-    <Container 
-    // type={type}
-    width = {width}
-    height ={height}
-    mt = {mt}
-    mb = {mb}
-    mr ={mr}
-    ml = {ml}
-    gap ={gap}
-    padding ={padding}
-    />
-  )
-}
-
-export default Input
+export default Input;

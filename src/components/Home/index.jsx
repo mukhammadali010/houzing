@@ -1,16 +1,9 @@
-import React from "react";
-import Button from "../../Generics/Button";
-import Input from "../../Generics/Input";
-import { Container } from "./style";
+import React from 'react'
 
 const Home = () => {
   return (
-    <Container>
-      <Input width={"829"} />
-      <Button width={'131'} type={'secondary'} padding={'12'}>Advanced</Button>
-      <Button  width={'180'} padding={'12'}>Search</Button>
-    </Container>
-  );
-};
+    <div>Home</div>
+  )
+}
 
-export default Home;
+export default Home

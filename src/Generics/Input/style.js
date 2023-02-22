@@ -34,9 +34,12 @@ const Container = styled.input`
   height: ${({ height }) => (height ? `${height}px` : "44px")};
   border: 1px solid #E6E9EC;
   border-radius: 2px;
+  &:not(:nth-child(2)){
+    margin-left: ${({ml})=> ml? `${ml}px` : '20px'};
+  }
   /* ${getType} */
   outline:none;
-
-
+  text-indent: 20px;
 `;
+
 export { Container };
