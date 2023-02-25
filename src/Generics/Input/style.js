@@ -1,32 +1,4 @@
 import styled from "styled-components";
-
-// const getType = ({ type }) => {
-//   switch (type) {
-//     case "primary":
-//       return {
-//         background: `var(--backgroundPrimary)`,
-//         color: `#fff`,
-//       };
-//     case "secondary":
-//       return {
-//         background: `transparent`,
-//         color: `var(--colorPrimary)`,
-//         border: `1px solid var(--colorPrimary)`,
-//       };
-//     case "third":
-//       return {
-//         background: `transparent`,
-//         color: `#fff`,
-//         border: `1px solid #fff`,
-//       };
-
-//     default:
-//       return {
-//         background: `var(--backgroundPrimary)`,
-//         color: `#fff`,
-//       };
-//   }
-// };
 const Container = styled.input`
   padding: 12px 40px;
   margin-top:${({ mt }) => (mt ? `${mt}px` : "10px")};
@@ -38,7 +10,6 @@ const Container = styled.input`
   &:not(:nth-child(2)){
     margin-left: ${({ml})=> ml? `${ml}px` : '20px'};
   }
-  /* ${getType} */
   outline:none;
   text-indent: 20px;
 `;
