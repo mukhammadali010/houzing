@@ -1,6 +1,7 @@
 import { Dropdown } from "antd";
 import React, { useRef, useState } from "react";
 import { Button, Input } from "../../Generics";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { Container, Icons } from "./style";
 
 const Filter = () => {
@@ -15,17 +16,34 @@ const Filter = () => {
 
   const minPriceRef = useRef();
   const maxPriceRef = useRef();
-
+  const isPageWide = useMediaQuery("(max-width: 834px)");
+  const isPageWideMobile = useMediaQuery("(max-width: 375px)");
   const items = [
     {
       key: "1",
       label: (
-        <div>
-          <h3>Address</h3>
-          <Input ref={countryRef} width={"200"} placeholder={"Country"} />
-          <Input ref={regionRef} width={"200"} placeholder={"Region"} />
-          <Input ref={cityRef} width={"200"} placeholder={"City"} />
-          <Input ref={zipRef} width={"200"} placeholder={"Zip code"} />
+        <div className="dropdown">
+          <h4>Address</h4>
+          <Input
+            ref={countryRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"Country"}
+          />
+          <Input
+            ref={regionRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"Region"}
+          />
+          <Input
+            ref={cityRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"City"}
+          />
+          <Input
+            ref={zipRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"Zip code"}
+          />
         </div>
       ),
     },
@@ -33,10 +51,22 @@ const Filter = () => {
       key: "2",
       label: (
         <div>
-          <h3>Appatment info</h3>
-          <Input ref={roomsRef} width={"200"} placeholder={"Rooms"} />
-          <Input ref={sizeRef} width={"200"} placeholder={"Size"} />
-          <Input ref={sortRef} width={"200"} placeholder={"Sort"} />
+          <h4>Appatment info</h4>
+          <Input
+            ref={roomsRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"Rooms"}
+          />
+          <Input
+            ref={sizeRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"Size"}
+          />
+          <Input
+            ref={sortRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"Sort"}
+          />
         </div>
       ),
     },
@@ -44,27 +74,21 @@ const Filter = () => {
       key: "3",
       label: (
         <div>
-          <h3>Price</h3>
-          <Input ref={minPriceRef} width={"200"} placeholder={"Min Price"} />
-          <Input ref={maxPriceRef} width={"200"} placeholder={"Max Price"} />
+          <h4>Price</h4>
+          <Input
+            ref={minPriceRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"Min Price"}
+          />
+          <Input
+            ref={maxPriceRef}
+            width={`${!isPageWide ? "200" : "160"}`}
+            placeholder={"Max Price"}
+          />
         </div>
       ),
     },
-    {
-      key: "4",
-      label: (
-        <div
-          style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}
-        >
-          <Button type={"secondary"} width={"128"}>
-            Cancel
-          </Button>
-          <Button type={"primary"} width={"128"}>
-            Submit
-          </Button>
-        </div>
-      ),
-    },
+    
   ];
 
   const [open, setOpen] = useState();
@@ -75,35 +99,33 @@ const Filter = () => {
 
   return (
     <Container>
-      <div className="inputWrapper">
-        <Icons.House />
-        <Input
-          width={"829"}
-          placeholder={"Enter an address, neighborhood, city, or ZIP code"}
-        />
-      </div>
+      <Icons.House />
+      
+      <Input
+        placeholder={"Enter an address, neighborhood, city, or ZIP code"} mt= {`${isPageWideMobile && '40'}`}
+      />
+    
+        <Dropdown
+          menu={{
+            items,
+          }}
+          open={open}
+          onOpenChange={onOpenChange}
+          placement="bottomRight"
+          arrow
+        >
+          <div className="inputWrapper">
+            <Button width={"151"} type={"secondary"} padding={"12"}>
+              <Icons.Setting />
+              Advanced
+            </Button>
+          </div>
+        </Dropdown>
 
-      <Dropdown
-        menu={{
-          items,
-        }}
-        open={open}
-        onOpenChange={onOpenChange}
-        placement="bottomRight"
-        arrow
-      >
-        <div className="inputWrapper">
-          <Button width={"151"} type={"secondary"} padding={"12"}>
-            <Icons.Setting />
-            Advanced
-          </Button>
-        </div>
-      </Dropdown>
-
-      <Button width={"180"} padding={"12"}>
-        <Icons.Search />
-        Search
-      </Button>
+        <Button width={`${!isPageWide ? "180" : "150"}`} padding={"12"}>
+          <Icons.Search />
+          Search
+        </Button>
     </Container>
   );
 };
