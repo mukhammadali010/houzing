@@ -19,6 +19,11 @@ const getType = ({ type }) => {
         color: `#fff`,
         border: `1px solid #fff`,
       };
+      case "card":
+      return {
+        background: `var(--colorPrimary)`,
+        color: `#fff`,
+      };
 
     default:
       return {
