@@ -57,7 +57,7 @@ const CaruselOwn = () => {
           </Content.Blok>
         </Wrapper>
         <h2 className="temporary">$5,250/mo</h2>
-        <Button type={'third'} >Read more</Button>
+        <Button type={'third'}>Read more</Button>
       </Content>
       <Carousel ref={slider} className="carusel" >
         <div>

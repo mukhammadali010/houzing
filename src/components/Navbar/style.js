@@ -22,10 +22,16 @@ const Wrapper = styled.div`
   background: var(--colorPrimary);
   padding: var(--padding);
   color: #fff;
+  @media (max-width: 1920px) {
+    padding:5px 370px;
+  }
   @media (max-width: 1150px) {
     padding: 5px 80px;
   }
 
+  @media (max-width: 1440px) {
+    padding: 5px 130px;
+  }
   @media (max-width: 1080px) {
     padding: 5px 50px;
   }

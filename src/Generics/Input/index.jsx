@@ -15,6 +15,8 @@ export const Input = forwardRef(
       padding,
       placeholder,
       onChange,
+      defaultValue,
+      name
     },
     ref
   ) => {
@@ -32,6 +34,8 @@ export const Input = forwardRef(
         padding={padding}
         placeholder={placeholder}
         onChange={onChange}
+        defaultValue={defaultValue}
+        name={name}
       />
     );
   }

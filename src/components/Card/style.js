@@ -7,7 +7,9 @@ import { ReactComponent as love } from "../../assets/icons/love.svg";
 import { ReactComponent as ruler } from "../../assets/icons/ruler.svg";
 
 const Container = styled.div`
-  width: 381px;
+  width: 100%;
+  max-width:381px;
+  min-width:33px;
   border: 1px solid #E6E9EC;
   position: relative;
   .sale{
@@ -40,7 +42,7 @@ const Avatar = styled.img`
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 20px;
   font-size: 14px;
 `;
 const Content = styled.div``;

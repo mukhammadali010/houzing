@@ -80,14 +80,25 @@ h3 {
   color: #FFFFFF;
   margin-top: 8px;
 }
-
+.descCard{
+  white-space:nowrap;
+  line-height: 20px;
+  margin-top: 20px;
+  overflow: hidden;
+  height: 40px;
+  padding-top: 10px;
+}
 .textCard {
   font-family: 'Montserrat';
+  display: flex;
+  gap: 2px;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
   color: #696969;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .ant-drawer-content-wrapper{
@@ -118,4 +129,7 @@ h3 {
 .drawer__icons span:hover{
   background: #e7e9eb;
   transition: .5s ease-in-out;
+}
+.read{
+  z-index: 1000;
 }
