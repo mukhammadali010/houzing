@@ -1,8 +1,8 @@
 import PropertiesProvider from "./properties";
 
-import { createContext } from "react";
+// import { createContext } from "react";
 
-const Root = createContext();
+// const Root = createContext();
 
 const RootContext = ({ children }) => {
   return (

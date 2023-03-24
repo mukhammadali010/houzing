@@ -33,7 +33,7 @@ const Filter = () => {
       .then((res) => {
         setData(res?.data || []);
       });
-  }, [url]);
+  }, []);
 
   useEffect(() => {
     let [d] = data.filter((ctg) => ctg.id === Number(query.get("category_id")));
