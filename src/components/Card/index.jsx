@@ -20,7 +20,8 @@ const Card = ({
     price,
     salePrice,
     attachments,
-    houseDetails: { area, bath, beds, garage},
+    category,
+    houseDetails: { area, bath, beds, garage , room},
   },
 }) => {
   return (
@@ -41,7 +42,7 @@ const Card = ({
             {city} {country} {description}
           </h3>
           <p className="textCard">
-            {address || "Quincy St, Brooklyn, NY, USA"}
+            {address || "Quincy St, Brooklyn, NY, USA"} - {category?.name} - {room} rooms
           </p>
           <Wrapper>
             <Content.Blok>

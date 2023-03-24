@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Select} from 'antd';
 
 import { ReactComponent as house } from "../../assets/icons/houses.svg";
 import { ReactComponent as setting } from "../../assets/icons/setting.svg";
@@ -95,4 +96,24 @@ Icons.Setting = styled(setting)`
 `;
 Icons.Search = styled(search)``;
 
-export { Container, Icons };
+
+const SelectAnt = styled(Select)`
+  width:200px;
+  margin-left:20px;
+  .ant-select-selector{
+    height:44px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ant-select-selection-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+  }
+`
+SelectAnt.Option = styled.option`
+
+`
+export { Container, Icons , SelectAnt};

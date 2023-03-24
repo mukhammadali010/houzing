@@ -19,13 +19,13 @@ body {
   /* background */
   --backgroundPrimary: #0061DF;
   --padding: 5px 130px;
-  --large:1920px;
+  --large: 1920px;
   --mian: 1440px;
-  --laptop:1366px;
-  --netbook:1024px;
-  --planshet:800px;
-  --mobile:428px;
-  --mobile-mini:360px;
+  --laptop: 1366px;
+  --netbook: 1024px;
+  --planshet: 800px;
+  --mobile: 428px;
+  --mobile-mini: 360px;
 }
 
 h1 {
@@ -36,7 +36,7 @@ h1 {
   line-height: 48px;
   letter-spacing: -0.02em;
   color: #FFFFFF;
-  
+
 }
 
 h2 {
@@ -80,14 +80,16 @@ h3 {
   color: #FFFFFF;
   margin-top: 8px;
 }
-.descCard{
-  white-space:nowrap;
+
+.descCard {
+  white-space: nowrap;
   line-height: 20px;
   margin-top: 20px;
   overflow: hidden;
   height: 40px;
   padding-top: 10px;
 }
+
 .textCard {
   font-family: 'Montserrat';
   display: flex;
@@ -101,35 +103,48 @@ h3 {
   overflow: hidden;
 }
 
-.ant-drawer-content-wrapper{
+.ant-drawer-content-wrapper {
   width: 280px !important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.drawer__wrapper{
-  display:flex ;
-  align-items: center ;
-  justify-content: center ;
-  flex-direction:column ;
+
+.drawer__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   height: 100%;
 }
 
-.drawer__icons{
+.drawer__icons {
   margin-top: 60px;
   gap: 37px;
 }
-.drawer__icons span{
+
+.drawer__icons span {
   padding: 10px;
   cursor: pointer;
-  border-radius:3px;
+  border-radius: 3px;
   margin: 5px;
 }
-.drawer__icons span:hover{
+
+.drawer__icons span:hover {
   background: #e7e9eb;
   transition: .5s ease-in-out;
 }
-.read{
+
+.read {
   z-index: 1000;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #fff !important;
+  background-color: #000 !important;
+  border-radius: 50%;
+  font-size: 20px;
+  box-shadow: 0px 10px 50px rgba(13, 38, 59, 0.1);
+  transform: rotate(180deg);
 }
