@@ -52,13 +52,13 @@ const HouseImage = styled.img`
 `;
 const Gr = styled.div`
   opacity: 0.3;
-  background: rgba(0, 0, 0, 0.65);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
   width: 100%;
-  height: 571px;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 5;
 `;
 
 const Content = styled.div`

@@ -8,7 +8,8 @@ import { ReactComponent as ruler } from "../../assets/icons/ruler.svg";
 
 const Container = styled.div`
   width: 100%;
-  max-width:381px;
+  max-width:${({width})=>`${width}px` || '381px'};
+  margin-top:${({mt})=>mt? `${mt}px`: ''};
   min-width:33px;
   border: 1px solid #E6E9EC;
   position: relative;

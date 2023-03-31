@@ -23,10 +23,12 @@ const Card = ({
     category,
     houseDetails: { area, bath, beds, garage , room},
   },
+  width,
+  mt
 }) => {
   return (
     <div>
-      <Container>
+      <Container width={width} mt={mt}>
         <ImgWrapper src={(attachments[0] && attachments[0].imgPath) || noimg} />
         <div className="sale">
           <Button type={"primary"} width={"100"} height={"23"}>

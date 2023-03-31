@@ -6,6 +6,7 @@ import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { navbar } from "../../utils/navbar";
 import Filter from "../Filter";
 import { Container, Icons, Links, Logo, Menu, Nav, User, Wrapper } from "./style";
+import Footer from "../Footer";
 
 const Navbar = () => {
   // Drawer settings
@@ -80,6 +81,8 @@ const Navbar = () => {
       </Wrapper>
       <Filter />
       <Outlet />
+      <Footer/>
+
       {/* Drawer start */}
       <Drawer
         title='Houzing'

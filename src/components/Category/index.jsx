@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import CategoryCard from "../CategoryCard";
-import { Container } from "./style";
+import { Container, Content } from "./style";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 
 const settings = {
@@ -18,6 +19,7 @@ const settings = {
 
 const Category = () => {
   const [data, setData] = useState([]);
+  const mobile = useMediaQuery("(max-width: 375px)");
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -33,6 +35,15 @@ const Category = () => {
   
   return (
     <Container> 
+      <Content>
+        <h3 className="contents">Category</h3>
+        <p className="textCard">
+          {
+            mobile ? '112 Glenwood Ave Hyde Park, Boston, MA  .' : 'Nulla quis curabitur velit volutpat auctor bibendum consectetur sit'
+          }
+          
+        </p>
+      </Content>
       <Slider {...settings} className = 'carusel'>
         {data.map((value) => {
           return <CategoryCard onClick = {()=>navigate(`/properties?category_id=${value.id}`)} key={value.id} data={value} />;
