@@ -79,6 +79,7 @@ const Navbar = () => {
           </Nav.Column>
         </Nav>
       </Wrapper>
+
       <Filter />
       <Outlet />
       <Footer/>

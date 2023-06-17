@@ -4,7 +4,7 @@ import { Container } from "./style";
 export const Input = forwardRef(
   (
     {
-      type,
+      typing,
       width,
       height,
       mt,
@@ -16,13 +16,14 @@ export const Input = forwardRef(
       placeholder,
       onChange,
       defaultValue,
-      name
+      name,
+      type
     },
-    ref
+      ref , 
   ) => {
     return (
       <Container
-        type={type}
+        typing={typing}
         ref={ref}
         width={width}
         height={height}
@@ -36,6 +37,7 @@ export const Input = forwardRef(
         onChange={onChange}
         defaultValue={defaultValue}
         name={name}
+        type={type}
       />
     );
   }

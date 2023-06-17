@@ -1,5 +1,6 @@
 import useUniqueId from "../hooks/index.jsx";
 import React from "react";
+import HouseItemPage from "../pages/HouseItemPage/PropertiesPage.jsx";
 const Home = React.lazy(() => import("../pages/HomePage/HomePage.jsx"));
 const PropertiesPage = React.lazy(() =>
   import("../pages/PropertiesPage/PropertiesPage.jsx")
@@ -34,6 +35,18 @@ export const navbar = [
   },
   {
     id: useUniqueId,
+    path: "properties/:id",
+    title: "Single house",
+    element: (
+      <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+        <HouseItemPage />
+      </React.Suspense>
+    ),
+    isPrivate: false,
+    isHidden: true,
+  },
+  {
+    id: useUniqueId, 
     path: "login",
     title: "Login",
     element: (

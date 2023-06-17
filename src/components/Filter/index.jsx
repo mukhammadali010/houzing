@@ -51,7 +51,8 @@ const Filter = () => {
   };
   const onChange = ({ target: { value, name } }) => {
     navigate(`${location?.pathname}${uzeReplace(name, value)}`);
-  };
+  };    
+  
   let query = useSearch();
   const items = [
     {

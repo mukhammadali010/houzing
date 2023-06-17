@@ -21,14 +21,15 @@ const Card = ({
     salePrice,
     attachments,
     category,
-    houseDetails: { area, bath, beds, garage , room},
+    houseDetails: { area, bath, beds, garage, room },
   },
   width,
-  mt
+  mt,
+  onClick,
 }) => {
   return (
     <div>
-      <Container width={width} mt={mt}>
+      <Container onClick={onClick} width={width} mt={mt}>
         <ImgWrapper src={(attachments[0] && attachments[0].imgPath) || noimg} />
         <div className="sale">
           <Button type={"primary"} width={"100"} height={"23"}>
@@ -44,7 +45,8 @@ const Card = ({
             {city} {country} {description}
           </h3>
           <p className="textCard">
-            {address || "Quincy St, Brooklyn, NY, USA"} - {category?.name} - {room} rooms
+            {address || "Quincy St, Brooklyn, NY, USA"} - {category?.name} -{" "}
+            {room} rooms
           </p>
           <Wrapper>
             <Content.Blok>
@@ -77,7 +79,7 @@ const Card = ({
           <CardFooter.Price>
             <p className="textCard">{`$${price}` || "$2,800/mo"}</p>
             <h3>{`$${salePrice}` || "$7,500/mo"}</h3>
-          </CardFooter.Price> 
+          </CardFooter.Price>
           <CardFooter.Like>
             <Icons.Arrow className="textCard" />
             <Icons.Love />

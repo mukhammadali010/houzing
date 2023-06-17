@@ -30,7 +30,7 @@ const Recommended = () => {
       .then((res) => {
         setData(res?.data || []);
       });
-  }, [search]);
+  }, [search]); 
 
   return (
     <Container padding={mobile ? "16" : "130"}>

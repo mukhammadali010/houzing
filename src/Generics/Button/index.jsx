@@ -12,7 +12,8 @@ const Button = ({
         gap,
         padding,
         children,
-        onclick
+        onclick,
+        success
 }) => {
 
   return (

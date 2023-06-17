@@ -11,6 +11,22 @@ body {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar{
+  width: 5px;
+}
+
+::-webkit-scrollbar-track{
+  background: white;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #0d4367;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: #0a263a;
+}
+
 :root {
   /* colors */
   --colorPrimary: #0d263b;
@@ -105,6 +121,16 @@ h3 {
   color: #696969;
   white-space: nowrap;
   overflow: hidden;
+}
+.subTitle{
+  font-family: 'Montserrat';
+  display: flex;
+  gap: 2px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #696969;
 }
 
 .ant-drawer-content-wrapper {

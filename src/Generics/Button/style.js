@@ -41,6 +41,8 @@ const Container = styled.div`
   gap: ${({ gap }) => (gap ? `${gap}px` : "10px")};
   width: ${({ width }) => (width ? `${width}px` : "fit-content")};
   height: ${({ height }) => (height ? `${height}px` : "44px")};
+  margin-bottom: ${({ mb }) => (mb ? `${mb}px` : "auto")};
+  margin-top: ${({ mt }) => (mt ? `${mt}px` : "auto")};
   cursor: pointer;
   border-radius: 2px;
   ${getType}
