@@ -13,7 +13,6 @@ const Container = styled.div`
   flex-direction: column;
   border:${({card})=>card? '1px solid #eee' : 'none'};
   width: 100%;
-  border: 1px solid red;
   max-width: 1440px;
   flex: ${({ card }) => (!card ? 3 : 1)};
   padding:${({card})=>card ? '25px' : 'none'};
@@ -98,7 +97,6 @@ const DownloadWapper = styled.div`
 display:flex;
 justify-content: flex-start;
 flex-direction:${({location})=>location? 'column':'none'};
-border: 1px solid red;
 gap:15px;
 .address{
   font-family: 'Montserrat';

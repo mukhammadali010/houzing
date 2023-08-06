@@ -24,15 +24,15 @@ const Category = () => {
 
   useEffect(() => {
     const { REACT_APP_BASE_URL: url } = process.env;
-    fetch(`${url}/categories/1`,{
-      headers: { Authentication: 'Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoibXVoYW1tYWRhbGlub3Npcm92MzRAZ21haWwuY29tIiwiZXhwIjoxNzA0MzMzOTE2LCJpYXQiOjE2ODYzMzM5MTYsInNjb3BlIjoiUk9MRV9VU0VSIn0.fZ5aGVH9BJC3XfabiFObWeAcx_nKVHrvyUFo42vryL_fGWURaoLw99xiOKOjCOufeYK3F1Ls4zDjFK2HhdMCGkeEKfvdUJxJ8ODuuGE1l0Orrj-qAqWwxgoHGxUFrwxyW4H3oQZshAmb7bLVZqBCQtrZFyY7mHWVVJPaeyMTdVftqcV_ZYsb5p8WxGBElb1XRRqvel8dWycFy0U1neuPD4YPgc6yAE2OW7ET3cyWKWRSAohbzqsFUYKKA_GlWPa2VuijU6y5ESDC-y-mNdEdwtCpJzm3QftYDpHvcleOdnLVstJM3FuYK1VS5LgCMf7-WiHQpgTsNs5hjtUC6_tB-Q'}
+    fetch(`${url}/categories`,{
+      headers: { Authentication: `Bearer ${localStorage.getItem('token')}`}
     })
       .then((res) => res.json())
       .then((res) => {
         setData(res?.data || []);
       });
   }, []);
-
+console.log( localStorage.getItem('token'));
   return (
     <Container>
       <Content>

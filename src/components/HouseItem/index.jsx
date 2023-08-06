@@ -5,6 +5,11 @@ import { useParams } from "react-router-dom";
 import user from "../../assets/img/avatar1.png";
 import Button from "../../Generics/Button";
 import Input from "../../Generics/Input";
+import Details from "../Details";
+import Features from "../Features";
+import Reviews from "../Reviews";
+import Schedule from "../Schedule";
+import Yandex from "../Yandex";
 import {
   Avatar,
   Br,
@@ -21,7 +26,7 @@ import {
 
 const HouseItem = () => {
   let { id } = useParams();
-
+  console.log(id);
   const [data, setData] = useState({});
   const { city, description } = data;
   useEffect(() => {
@@ -211,7 +216,11 @@ const HouseItem = () => {
               </div>
             </DownloadWapper>
           </div>
-            location
+            <Yandex/>
+            <Details/>
+            <Features/>
+            <Schedule/>
+            <Reviews/>
         </Container>
         <Container card className="nocard"></Container>
       </Wrapper>
