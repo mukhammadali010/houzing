@@ -79,6 +79,7 @@ CardFooter.Price = styled.div`
   }
 `;
 CardFooter.Like = styled.div`
+  /* background: ${({liked})=>liked? 'red': '#eee'}; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +95,10 @@ Icons.Ruler = styled(ruler)``;
 
 Icons.Love = styled(love)`
   cursor: pointer;
-  background: #eee;
+  background: ${({liked})=>liked? 'red': '#eee'};
+ & path {
+    fill: #fff;
+  }
   width: 35px;
   height: 35px;
   border-radius: 50%;

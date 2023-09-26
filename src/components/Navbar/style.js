@@ -127,4 +127,11 @@ Icons.Twiter = styled(twiter)`
   }
   
 `;
-export { Container, Nav, Wrapper, Logo, Links, Menu, User, Icons };
+
+const Menues = styled.div`
+display: flex;
+flex-direction:column;
+gap:10px;
+`
+Menues.Items = styled.div``
+export { Container, Nav, Wrapper, Logo, Links, Menu, User, Icons , Menues };

@@ -16,7 +16,7 @@ const useRequest = () => {
       )
       return res
     } catch (error) {
-        alert('Login yoki parol hato')
+        // alert('Login yoki parol hato')
         return `${error}`
 
     }

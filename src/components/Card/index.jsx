@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Avatar,
   CardBody,
@@ -11,6 +11,7 @@ import {
 } from "./style";
 import noimg from "../../assets/img/noimg.jpeg";
 import Button from "../../Generics/Button";
+import { useState } from "react";
 const Card = ({
   data: {
     address,
@@ -21,12 +22,45 @@ const Card = ({
     salePrice,
     attachments,
     category,
+    id,
+    favorite,
     houseDetails: { area, bath, beds, garage, room },
   },
+  getData,
   width,
   mt,
   onClick,
 }) => {
+  const { REACT_APP_BASE_URL: url } = process.env;
+  const [data , setData] = useState([])
+  useEffect(() => {
+    const { REACT_APP_BASE_URL: url } = process.env;
+    fetch(`${url}/houses/getAll/favouriteList`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log("resss0 ", res.data);
+        setData(res?.data)
+      });
+  }, []);
+  const liked = (event, id, favorite) => {
+    console.log(favorite);
+    event.stopPropagation();
+    // fetch(`${url}/houses/addFavourite/${id}?favourite=true`, {
+    //   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    //   method: "PUT",
+    // });
+
+    fetch(`${url}/houses/addFavourite/${id}?favourite=${!favorite}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      method: "PUT",
+    }).then(()=>{
+      
+      getData()
+    })
+  };
   return (
     <div>
       <Container onClick={onClick} width={width} mt={mt}>
@@ -80,9 +114,14 @@ const Card = ({
             <p className="textCard">{`$${price}` || "$2,800/mo"}</p>
             <h3>{`$${salePrice}` || "$7,500/mo"}</h3>
           </CardFooter.Price>
-          <CardFooter.Like>
+          <CardFooter.Like onClick={(e) =>{
+            const fav =  data.some((value)=>value.id === id);
+            liked(e, id, fav)
+          } } >
             <Icons.Arrow className="textCard" />
-            <Icons.Love />
+            <Icons.Love liked={data.some((value)=>{
+                    return value.id === id
+            })} />
           </CardFooter.Like>
         </CardFooter>
       </Container>

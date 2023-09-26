@@ -2,14 +2,16 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  padding: var(--padding);
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  .gvAtOL{
+    padding:0;
+  }
 `;
 const Content = styled.div`
   width: 580px;
-  height: 376px;
   background: #ffffff;
   padding: 24px 30px;
   margin: 64px auto;

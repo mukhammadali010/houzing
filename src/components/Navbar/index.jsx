@@ -1,14 +1,67 @@
 import React, { useState } from "react";
-import { Button as ButtonA, Drawer } from "antd";
+import { Button as ButtonA, Drawer, Dropdown } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 import Button from "../../Generics/Button";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { navbar } from "../../utils/navbar";
 import Filter from "../Filter";
-import { Container, Icons, Links, Logo, Menu, Nav, User, Wrapper } from "./style";
+import {
+  Container,
+  Icons,
+  Links,
+  Logo,
+  Menu,
+  Nav,
+  Wrapper,
+  Menues,
+} from "./style";
 import Footer from "../Footer";
 
 const Navbar = () => {
+  const token = localStorage.getItem("token");
+  console.log("toekn", typeof token, token);
+
+  const profile = ({target:{dataset:{name}}}) => {
+    // console.log(name);
+    if (name === "logout") {
+      localStorage.removeItem("token");
+      navigate("/register");
+    } else if(name === 'properties'){
+      navigate(`${name}`)
+    }
+    else if(name === 'favourite'){
+      navigate(`${name}`)
+    }
+  };
+  const items = [
+    {
+      key: "1",
+      label: (
+        <div>
+          <Menues>
+            <Menues.Items data-name="profile" onClick={profile}>
+              My Profile
+            </Menues.Items>
+            <Menues.Items data-name="properties" onClick={profile}>
+              My Properties
+            </Menues.Items>
+            <Menues.Items data-name="favourite" onClick={profile}>
+              My Favourites
+            </Menues.Items>
+            <Menues.Items data-name="logout" onClick={profile}>
+              Log out
+            </Menues.Items>
+          </Menues>
+        </div>
+      ),
+    },
+  ];
+  const [opens, setOpens] = useState();
+
+  const onOpenChange = () => {
+    setOpens(!opens);
+  };
+
   // Drawer settings
   const [open, setOpen] = useState(false);
   const [placement] = useState("left");
@@ -18,11 +71,8 @@ const Navbar = () => {
   const onClose = () => {
     setOpen(false);
   };
-  
 
   // Drawer settings end
-
-  const login = useNavigate();
   const navigate = useNavigate();
 
   const isPageWide = useMediaQuery("(max-width: 834px)");
@@ -30,7 +80,7 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Nav>
-          <Nav.Column logo >
+          <Nav.Column logo>
             {!isPageWide ? (
               <div onClick={() => navigate("/home")} className="title">
                 <Logo /> <h3 className="title">Houzing</h3>
@@ -63,9 +113,9 @@ const Navbar = () => {
             </Nav.Column>
           )}
           <Nav.Column button>
-            {!isPageWide ? (
+            {/* {!isPageWide ? (
               <Button
-                onclick={() => login("/login")}
+                onclick={() => navigate("/login")}
                 type={"third"}
                 width={"120"}
                 height={"44"}
@@ -74,7 +124,35 @@ const Navbar = () => {
                 Login
               </Button>
             ) : (
-              <User onClick={()=> navigate('/contact')}/>
+              <User onClick={() => navigate("/contact")} />
+            )} */}
+
+            {token !== "undefined" && token !== null ? (
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                open={opens}
+                onOpenChange={onOpenChange}
+                placement="bottomRight"
+                trigger={"click"}
+              >
+                <div>
+                  <Button type={"third"} width={"120"} height={"44"} gap={"10"}>
+                    Profile
+                  </Button>
+                </div>
+              </Dropdown>
+            ) : (
+              <Button
+                onclick={() => navigate("/register")}
+                type={"third"}
+                width={"120"}
+                height={"44"}
+                gap={"10"}
+              >
+                SignIn
+              </Button>
             )}
           </Nav.Column>
         </Nav>
@@ -82,17 +160,17 @@ const Navbar = () => {
 
       <Filter />
       <Outlet />
-      <Footer/>
+      <Footer />
 
       {/* Drawer start */}
       <Drawer
-        title='Houzing'
+        title="Houzing"
         placement={placement}
         closable={false}
         onClose={onClose}
         open={open}
         key={placement}
-        >
+      >
         <div className="drawer__wrapper">
           {navbar.map(({ path, title, isHidden }, index) => {
             return (
@@ -107,19 +185,25 @@ const Navbar = () => {
               )
             );
           })}
-            <Icons className="drawer__icons">
-              <span><Icons.Facebook /></span>
-              <span><Icons.Instagram /></span>
-              <span><Icons.Linkedin /></span>
-              <span><Icons.Twiter /></span>
-            </Icons>
-          </div>
+          <Icons className="drawer__icons">
+            <span>
+              <Icons.Facebook />
+            </span>
+            <span>
+              <Icons.Instagram />
+            </span>
+            <span>
+              <Icons.Linkedin />
+            </span>
+            <span>
+              <Icons.Twiter />
+            </span>
+          </Icons>
+        </div>
       </Drawer>
       {/* Drawer end */}
-
     </Container>
   );
 };
 
 export default Navbar;
- 
