@@ -32,6 +32,9 @@ const Navbar = () => {
     else if(name === 'favourite'){
       navigate(`${name}`)
     }
+    else if (name === 'profile'){
+      navigate(`${name}`)
+    }
   };
   const items = [
     {

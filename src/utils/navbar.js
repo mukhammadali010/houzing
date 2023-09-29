@@ -2,6 +2,7 @@ import useUniqueId from "../hooks/index.jsx";
 import React from "react";
 import HouseItemPage from "../pages/HouseItemPage/PropertiesPage.jsx";
 import FavouritesPage from "../pages/FavouritesPage/PropertiesPage.jsx";
+import ProfilePage from "../pages/ProfilePage/ProfilePage.jsx";
 const Home = React.lazy(() => import("../pages/HomePage/HomePage.jsx"));
 const PropertiesPage = React.lazy(() =>
   import("../pages/PropertiesPage/PropertiesPage.jsx")
@@ -41,6 +42,18 @@ export const navbar = [
     element: (
       <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
         <FavouritesPage />
+      </React.Suspense>
+    ),
+    isPrivate: true,
+    isHidden: true,
+  },
+  {
+    id: useUniqueId,
+    path: "profile",
+    title: "My-profile",
+    element: (
+      <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+        <ProfilePage />
       </React.Suspense>
     ),
     isPrivate: true,
