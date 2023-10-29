@@ -26,17 +26,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const onSubmit = () => {
-    // request({url:'/public/auth/login' , method:'POST' , data , me:true })
-    //   .then((res) => {
-    //     console.log(res);
-    //     localStorage.setItem('token' , res.authenticationToken || ""
-    //     )
-    //     if(res?.authenticationToken){
-    //       navigate('/home');
-    //       success()
-    //    }
-    //  });
-
+   
     fetch("http://localhost:8081/api/public/auth/register", {
       method: "POST",
       headers: { 
@@ -46,7 +36,6 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.authenticationToken || "");
         if (res?.authenticationToken) {
           navigate("/register");

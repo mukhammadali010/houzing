@@ -3,12 +3,12 @@ import React from "react";
 import HouseItemPage from "../pages/HouseItemPage/PropertiesPage.jsx";
 import FavouritesPage from "../pages/FavouritesPage/PropertiesPage.jsx";
 import ProfilePage from "../pages/ProfilePage/ProfilePage.jsx";
+import AddHousePage from "../pages/AddHousePage/AddHousePage.jsx";
 const Home = React.lazy(() => import("../pages/HomePage/HomePage.jsx"));
 const PropertiesPage = React.lazy(() =>
   import("../pages/PropertiesPage/PropertiesPage.jsx")
 );
 const RegisterPage = React.lazy(() => import("../pages/RegisterPage/RegisterPage.jsx"));
-const ContactPage = React.lazy(() => import("../pages/ContactPage/ContactPage.jsx"));
 
 export const navbar = [
   {
@@ -61,6 +61,30 @@ export const navbar = [
   },
   {
     id: useUniqueId,
+    path: "profile/newhouse",
+    title: "My-profile",
+    element: (
+      <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+        <AddHousePage />
+      </React.Suspense>
+    ),
+    isPrivate: true,
+    isHidden: true,
+  },
+  {
+    id: useUniqueId,
+    path: "profile/editHouse/:id",
+    title: "My-profile",
+    element: (
+      <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+        <AddHousePage />
+      </React.Suspense>
+    ),
+    isPrivate: true,
+    isHidden: true,
+  },
+  {
+    id: useUniqueId,
     path: "properties/:id",
     title: "Single house",
     element: (
@@ -83,16 +107,5 @@ export const navbar = [
     isPrivate: false,
     isHidden: true,
   },
-  {
-    id: useUniqueId,
-    path: "contact",
-    title: "Contact",
-    element: (
-      <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
-        <ContactPage />
-      </React.Suspense>
-    ),
-    isPrivate: false,
-    isHidden: false,
-  },
+  
 ];

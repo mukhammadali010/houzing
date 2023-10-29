@@ -116,20 +116,7 @@ const Navbar = () => {
             </Nav.Column>
           )}
           <Nav.Column button>
-            {/* {!isPageWide ? (
-              <Button
-                onclick={() => navigate("/login")}
-                type={"third"}
-                width={"120"}
-                height={"44"}
-                gap={"10"}
-              >
-                Login
-              </Button>
-            ) : (
-              <User onClick={() => navigate("/contact")} />
-            )} */}
-
+           
             {token !== "undefined" && token !== null ? (
               <Dropdown
                 menu={{
@@ -153,6 +140,7 @@ const Navbar = () => {
                 width={"120"}
                 height={"44"}
                 gap={"10"}
+                mr ={'0'}
               >
                 SignIn
               </Button>

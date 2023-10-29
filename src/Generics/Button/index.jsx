@@ -13,7 +13,8 @@ const Button = ({
         padding,
         children,
         onclick,
-        success
+        success,
+        disabled
 }) => {
 
   return (
@@ -28,6 +29,7 @@ const Button = ({
     gap ={gap}
     padding ={padding}
     onClick={onclick}
+    disabled={disabled}
     >
      {children}
     </Container>

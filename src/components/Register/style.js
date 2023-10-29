@@ -6,8 +6,16 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  .gvAtOL{
-    padding:0;
+  flex-direction:column;
+  .sc-EJAja{
+    padding:0 !important;
+  }
+  .ant-tabs-nav{
+    padding:0 !important;
+    width: 580px;
+    display:flex;
+    align-self: center;
+    justify-content: center;
   }
 `;
 const Content = styled.div`

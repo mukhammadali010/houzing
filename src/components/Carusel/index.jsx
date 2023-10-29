@@ -32,8 +32,8 @@ const CaruselOwn = () => {
   };
   return (
     <Container>
-      <Arrow onClick={onChange} data-name="left" left='true' />
-      <Arrow onClick={onChange} data-name="right" right='false' />
+      <Arrow onClick={onChange} data-name="left" left="true" />
+      <Arrow onClick={onChange} data-name="right" right="false" />
       <Gr />
       <Content>
         <h1 className="pool">Skyper Pool Partment</h1>
@@ -57,9 +57,9 @@ const CaruselOwn = () => {
           </Content.Blok>
         </Wrapper>
         <h2 className="temporary">$5,250/mo</h2>
-        <Button type={'third'}>Read more</Button>
+        <Button type={"third"}>Read more</Button>
       </Content>
-      <Carousel ref={slider} className="carusel" >
+      <Carousel ref={slider} className="carusel">
         <div>
           <h5 style={contentStyle}>
             <HouseImage src={house1} />

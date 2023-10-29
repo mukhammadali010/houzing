@@ -19,7 +19,7 @@ const getType = ({ type }) => {
         color: `#fff`,
         border: `1px solid #fff`,
       };
-      case "card":
+    case "card":
       return {
         background: `var(--colorPrimary)`,
         color: `#fff`,
@@ -32,7 +32,8 @@ const getType = ({ type }) => {
       };
   }
 };
-const Container = styled.div`
+const Container = styled.button`
+  border: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -43,12 +44,15 @@ const Container = styled.div`
   height: ${({ height }) => (height ? `${height}px` : "44px")};
   margin-bottom: ${({ mb }) => (mb ? `${mb}px` : "auto")};
   margin-top: ${({ mt }) => (mt ? `${mt}px` : "auto")};
-  cursor: pointer;
+  margin-right: ${({ mr }) => (mr ? `${mr}px` : "auto")};
+  margin-left: ${({ ml }) => (ml ? `${ml}px` : "auto")};
+  opacity: ${({ disabled }) => (disabled ? "0.3" : "1")};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   border-radius: 2px;
   ${getType}
 
-  &:active{
-    transform:scale(.97);
+  &:active {
+    transform: scale(0.97);
     opacity: 0.7;
   }
 `;

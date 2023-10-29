@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   padding: var(--padding);
   color: #fff;
   @media (max-width: 1920px) {
-    padding:5px 370px;
+    padding: 5px 370px;
   }
   @media (max-width: 1150px) {
     padding: 5px 80px;
@@ -58,17 +58,17 @@ Nav.Column = styled.div`
   cursor: ${({ logo }) => logo && "pointer"};
   justify-content: ${({ menu }) => menu && "center"};
   justify-content: ${({ button }) => button && "flex-end"};
-  @media (max-width:834px) {
-  justify-content: ${({ menu }) => menu && "center"};
-  gap:10px;
-  cursor: pointer;
+  @media (max-width: 834px) {
+    justify-content: ${({ menu }) => menu && "center"};
+    gap: 10px;
+    cursor: pointer;
   }
   .title {
     color: white;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap:11px;
+    gap: 11px;
   }
   .active {
     color: gray;
@@ -101,37 +101,32 @@ const User = styled(user)`
   }
   cursor: pointer;
 `;
-const Icons = styled.div`
-`;
+const Icons = styled.div``;
 Icons.Facebook = styled(facebook)`
   & path {
     fill: var(--colorPrimary);
   }
-  
 `;
 Icons.Instagram = styled(instagram)`
   & path {
     fill: var(--colorPrimary);
   }
-  
 `;
 Icons.Linkedin = styled(linkedin)`
   & path {
     fill: var(--colorPrimary);
   }
-  
 `;
 Icons.Twiter = styled(twiter)`
   & path {
     fill: var(--colorPrimary);
   }
-  
 `;
 
 const Menues = styled.div`
-display: flex;
-flex-direction:column;
-gap:10px;
-`
-Menues.Items = styled.div``
-export { Container, Nav, Wrapper, Logo, Links, Menu, User, Icons , Menues };
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+Menues.Items = styled.div``;
+export { Container, Nav, Wrapper, Logo, Links, Menu, User, Icons, Menues };

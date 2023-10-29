@@ -11,7 +11,6 @@ const Details = () => {
     fetch(`${url}/houses/id/${id}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setData(res.data);
       });
   }, []);

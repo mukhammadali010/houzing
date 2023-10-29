@@ -51,6 +51,7 @@ const Filter = () => {
   };
   const onChange = ({ target: { value, name } }) => {
     navigate(`${location?.pathname}${uzeReplace(name, value)}`);
+    
   };    
   
   let query = useSearch();
@@ -99,7 +100,7 @@ const Filter = () => {
       key: "2",
       label: (
         <div>
-          <h4>Appatment info</h4>
+          <h4>Apartment info</h4>
           <Input
             ref={roomsRef}
             width={`${!isPageWide ? "200" : "160"}`}

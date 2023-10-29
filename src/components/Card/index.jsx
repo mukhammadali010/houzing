@@ -41,18 +41,11 @@ const Card = ({
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log("resss0 ", res.data);
         setData(res?.data)
       });
   }, []);
   const liked = (event, id, favorite) => {
-    console.log(favorite);
     event.stopPropagation();
-    // fetch(`${url}/houses/addFavourite/${id}?favourite=true`, {
-    //   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    //   method: "PUT",
-    // });
-
     fetch(`${url}/houses/addFavourite/${id}?favourite=${!favorite}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       method: "PUT",

@@ -17,7 +17,8 @@ export const Input = forwardRef(
       onChange,
       defaultValue,
       name,
-      type
+      type,
+      value
     },
       ref , 
   ) => {
@@ -38,6 +39,7 @@ export const Input = forwardRef(
         defaultValue={defaultValue}
         name={name}
         type={type}
+        value={value}
       />
     );
   }

@@ -30,7 +30,6 @@ const Category = () => {
         setData(res?.data || []);
       });
   }, []);
-  console.log(localStorage.getItem("token"));
   return (
     <Container>
       <Content>

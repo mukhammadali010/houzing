@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import {ReactComponent as edit} from '../../assets/icons/edit.svg';
 import {ReactComponent as trash} from '../../assets/icons/trash.svg';
+import { Select} from 'antd';
+
 const Container = styled.div`
   position: relative;
   width: 100%;
@@ -10,6 +12,10 @@ const Container = styled.div`
   flex-direction: column;
   border: 1px solid #e6e9ec;
   box-shadow: 0px 10px 30px rgba(13, 38, 59, 0.05);
+
+  .contents{
+   text-align:inherit;
+  }
   .wrap {
     display: grid;
     grid-template-rows: auto;
@@ -29,14 +35,26 @@ const Container = styled.div`
 `;
 const Content = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  flex-direction: ${({section})=> section ? '': 'column'};
   width: 100%;
   margin-bottom: 32px;
- 
-  .contents{
-    margin-right:auto;
-  }
+  border: 1px solid #eee;
+  padding:20px 30px;
+ gap:20px;
+
+ .pre{
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  white-space:wrap;
+
+  width:100%;
+  max-width: 1440px;
+  
+}
+  
 `;
 
 const ListWrap = styled.div`
@@ -53,6 +71,7 @@ justify-content:  ${({flex})=> flex?'start':''};
 }
 .sale{
   color: var(--color-5, #FFF);
+/* font-family: Cerebri Sans; */
 font-size: 10px;
 font-style: normal;
 font-weight: 600;
@@ -63,22 +82,53 @@ line-height: normal;
 const Icons = styled.div``;
 
 Icons.Trash = styled(trash)`
-margin:16px;
-cursor: pointer;
-:hover{
-  & path{
-    fill:red;
+ margin: 16px;
+  cursor: pointer;
+  :hover{
+
+    & path {
+      fill: red; /* This sets the fill color of the SVG path to red */
+    }
   }
-}
 `
 Icons.Edit = styled(edit)`
 margin: 16px;
 cursor: pointer;
-:hover{
-  & path{
-    fill:blue;
-  }
-}
 `
 
-export { Container, Content ,ListWrap , Icons};
+
+const SelectAnt = styled(Select)`
+  width:200px;
+  margin-left:20px;
+  .ant-select-selector{
+    height:44px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ant-select-selection-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+  }
+`
+SelectAnt.Option = styled.option`
+
+`
+
+const Section = styled.div`
+display: flex;
+gap:24px;
+align-items:flex-start;
+justify-content: flex-start;
+flex-direction:${({section})=> section? '': 'column'};
+width:100%;
+
+.ant-checkbox-wrapper{
+  margin-left:8px;
+}
+
+`
+
+export { Container, Content ,ListWrap , Icons , SelectAnt , Section};

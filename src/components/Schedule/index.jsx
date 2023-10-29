@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Container, DownloadWapper } from "./style";
 import { DatePicker, Select, Space, TimePicker } from "antd";
 import Input from "../../Generics/Input";
@@ -65,7 +65,7 @@ const Schedule = () => {
         </DownloadWapper>
       </div>
         <Input ml={"0"} placeholder={"Message"} typing={"login"} mt={'30'}/>
-        <Button mt={'25'}>Submit a tour request</Button>
+        <Button ml={'0'} mt={'25'}>Submit a tour request</Button>
     </Container>
   );
 };
