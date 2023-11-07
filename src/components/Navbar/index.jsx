@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button as ButtonA, Drawer, Dropdown } from "antd";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Button from "../../Generics/Button";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { navbar } from "../../utils/navbar";
@@ -14,26 +14,28 @@ import {
   Nav,
   Wrapper,
   Menues,
+  User,
 } from "./style";
 import Footer from "../Footer";
 
 const Navbar = () => {
   const token = localStorage.getItem("token");
-  console.log("toekn", typeof token, token);
+  const search = useLocation()
 
-  const profile = ({target:{dataset:{name}}}) => {
-    // console.log(name);
+  const profile = ({
+    target: {
+      dataset: { name },
+    },
+  }) => {
     if (name === "logout") {
       localStorage.removeItem("token");
       navigate("/register");
-    } else if(name === 'properties'){
-      navigate(`${name}`)
-    }
-    else if(name === 'favourite'){
-      navigate(`${name}`)
-    }
-    else if (name === 'profile'){
-      navigate(`${name}`)
+    } else if (name === "properties") {
+      navigate(`${name}`);
+    } else if (name === "favourite") {
+      navigate(`${name}`);
+    } else if (name === "profile") {
+      navigate(`${name}`);
     }
   };
   const items = [
@@ -79,6 +81,15 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const isPageWide = useMediaQuery("(max-width: 834px)");
+
+  const handleRoute = ()=>{
+    if(search.pathname.includes('register') || search.pathname.includes('profile') || search.pathname.includes('favourite')){
+      return null
+    }
+    else if(search.pathname.includes('home') || !search.pathname.includes('properties/')){
+      return <Filter/>
+    }
+  }
   return (
     <Container>
       <Wrapper>
@@ -89,8 +100,8 @@ const Navbar = () => {
                 <Logo /> <h3 className="title">Houzing</h3>
               </div>
             ) : (
-              <ButtonA type="secondary" onClick={showDrawer}>
-                <Menu />
+              <ButtonA style={{padding:'0'}} type="secondary" onClick={showDrawer}>
+                <Menu  />
               </ButtonA>
             )}
           </Nav.Column>
@@ -116,7 +127,6 @@ const Navbar = () => {
             </Nav.Column>
           )}
           <Nav.Column button>
-           
             {token !== "undefined" && token !== null ? (
               <Dropdown
                 menu={{
@@ -128,9 +138,18 @@ const Navbar = () => {
                 trigger={"click"}
               >
                 <div>
-                  <Button type={"third"} width={"120"} height={"44"} gap={"10"}>
-                    Profile
-                  </Button>
+                  {isPageWide ? (
+                    <User />
+                  ) : (
+                    <Button
+                      type={"third"}
+                      width={"120"}
+                      height={"44"}
+                      gap={"10"}
+                    >
+                      Profile
+                    </Button>
+                  )}
                 </div>
               </Dropdown>
             ) : (
@@ -140,7 +159,7 @@ const Navbar = () => {
                 width={"120"}
                 height={"44"}
                 gap={"10"}
-                mr ={'0'}
+                mr={"0"}
               >
                 SignIn
               </Button>
@@ -148,8 +167,9 @@ const Navbar = () => {
           </Nav.Column>
         </Nav>
       </Wrapper>
-
-      <Filter />
+            {
+              handleRoute()
+            }
       <Outlet />
       <Footer />
 
@@ -194,7 +214,7 @@ const Navbar = () => {
       </Drawer>
       {/* Drawer end */}
     </Container>
-  );
+  ); 
 };
 
 export default Navbar;

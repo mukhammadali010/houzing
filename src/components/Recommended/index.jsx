@@ -6,9 +6,8 @@ import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 const Recommended = () => {
-  const query = useMediaQuery("(max-width: 1366px)");
+  const query = useMediaQuery("(max-width: 550px)");
   const tablet = useMediaQuery("(max-width: 834px)");
-  const mobile = useMediaQuery("(max-width: 375px)");
 
   const settings = {
     dots: true,
@@ -30,28 +29,28 @@ const Recommended = () => {
       .then((res) => {
         setData(res?.data || []);
       });
-  }, [search]); 
+  }, [search]);  
 
   return (
-    <Container padding={mobile ? "16" : "130"}>
+    <Container padding={query ? "16" : "130"}>
       <Content>
         <h3 className="contents">Recommended</h3>
         <p className="textCard">
           {
-            mobile ? '112 Glenwood Ave Hyde Park, Boston, MA  .' : 'Nulla quis curabitur velit volutpat auctor bibendum consectetur sit'
+            query ? '112 Glenwood Ave Hyde Park, Boston, MA  .' : 'Nulla quis curabitur velit volutpat auctor bibendum consectetur sit'
           }
           
         </p>
       </Content>
-      {mobile ? (
-        data.map((value) => {
-          return <Card key={value.id} data={value} mt={mobile? '90' : ''} />;
+      {query ? (
+        data.map((value , index) => {
+          return <Card key={value.id} data={value} mt={index === 0? '90' : '10'} />;
         })
       ) : (
         <Slider {...settings} className="carusel">
           {data.map((value) => {
             return (
-              <Card key={value.id} data={value} width={query ? "340" : null} />
+              <Card key={value.id} data={value} width={!tablet?  '340':undefined}/>
             );
           })}
         </Slider>

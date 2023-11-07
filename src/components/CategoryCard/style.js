@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 290px;
   height: 350px;
-  margin-left:30px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-    url(.jpg);
+  margin-bottom:40px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
   /* XXL */
   box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06),
     0px 7px 46px rgba(0, 0, 0, 0.06), 0px 8px 15px rgba(0, 0, 0, 0.06);
   border-radius: 3px;
   transform: matrix(1, 0, 0, 1, 0, 0);
   cursor: pointer;
+
+
 `;
 const Content = styled.div`
   position: absolute;
@@ -31,6 +31,7 @@ const Content = styled.div`
 
 const ImgWrapper = styled.img`
   width: 100%;
+  height:100%;
 `;
 
 const Icons = styled.div``;

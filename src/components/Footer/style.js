@@ -9,16 +9,31 @@ import { ReactComponent as linkedin } from "../../assets/icons/linkedin.svg";
 import { ReactComponent as logoImg } from "../../assets/icons/logo.svg";
 
 const Container = styled.div`
-position: relative;
   width: 100%;
   background-color: var(--colorPrimary);
   padding: 48px 130px 20px;
-  @media (max-width: 375px) {
-    height: 100%;
+  height: 100vh;
+  @media (max-width: 834px) {
+  padding:var(--padding);
+  height: 100%;
+  display: center;
+  align-items: center;
+  justify-content: center;
+  padding:30px;
+  gap:50px;
   }
+  @media (max-width: 375px) {
+    padding: 5px 16px;
+  }
+  
+  
+  
   .textCard1 {
     font-family: "Montserrat";
     display: flex;
+    flex-wrap:wrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
     gap: 2px;
     font-style: normal;
     font-weight: 400;
@@ -35,6 +50,12 @@ const FooterLogo = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  @media (max-width: 375px) {
+    display: block;
+    .textCard1{
+      text-align:center;
+    }
+  }
   .title{
     color:#fff;
   }
@@ -54,9 +75,7 @@ const Content = styled.div`
   flex-direction: column;
   width: 100%;
   @media (max-width: 375px) {
-    position: absolute;
-    top: 40px;
-    transform: translate(-50%, 5%);
+    
   }
   .temporary {
     margin-bottom: 30px;
@@ -82,49 +101,64 @@ const Content = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap:wrap;
   width: 100%;
-  height:300px;
+
+/*     
+@media (max-width: 834px) {
+    display:grid;
+    grid-template-columns:auto  auto;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    margin:0 auto;
+
+  }
+
+  @media (max-width: 375px) {
+    display:block;
+    height:100%;
+   
+  } */
+  
+ 
 `;
 Content.Blok = styled.div`
     display: flex;
   flex-direction: column;
-  :first-child {
-    width: 400px;
-  }
-  :not(:first-child){
+ 
+  /* :not(:first-child){
     margin-left:40px;
-  }
+  } */
   width: 243px;
   height: 250px;
   h3 {
     font-size: 16px;
     color: #fff;
   }
-  @media (max-width: 375px) {
-    font-size: 14px;
-  }
+
+ 
+
 
 `;
 const Devider = styled.div`
-position:absolute;
-left: 0;
+margin-top:60px;
 width:100%;
 background: rgba(255, 255, 255, 0.15);
 padding:1px;
 `
 
 Content.Footer = styled.div`
-  display: flex;
+  display:flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: start;
   gap: 20px;
   margin: 10px 0;
   span{
     border-radius:3px;
     padding: 12px;
-    margin-left:-12px;
     cursor: pointer;
   }
   span:hover {

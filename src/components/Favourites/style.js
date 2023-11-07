@@ -14,12 +14,11 @@ const Container = styled.div`
     width: 100%;
     max-width: 1440px;
     padding: var(--padding);
-    @media (max-width: 1366px) {
-      padding: 5px 130px;
+    @media (max-width: 834px) {
+      padding: var(--paddingMobile);
     }
     @media (max-width: 375px) {
-      padding: 5px 20px;
-      margin-top: 429px;
+      padding: var(--paddingMobile);
     }
   }
 `;

@@ -6,7 +6,7 @@ import Card from "../Card";
 
 const Favourites = () => {
   const [data, setData] = useState([]);
-  const mobile = useMediaQuery("(max-width: 375px)");
+  const tablet = useMediaQuery("(max-width: 834px)");
   const navigate = useNavigate();
 
   const getData = ()=>{
@@ -29,13 +29,13 @@ const Favourites = () => {
       <Content>
         <h3 className="contents">Favourites</h3>
         <p className="textCard">
-          {mobile
+          {tablet
             ? "112 Glenwood Ave Hyde Park, Boston, MA  ."
             : "Nulla quis curabitur velit volutpat auctor bibendum consectetur sit"}
         </p>
       </Content>
       <div className="wrap">
-        {data.map((value) => {
+        {data.map((value , index) => {
           return <Card key={value.id} data={value} getData={getData} />;
         })}
       </div>

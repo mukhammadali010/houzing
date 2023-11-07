@@ -51,7 +51,6 @@ const Signin = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.authenticationToken || "");
         if (res?.authenticationToken) {
           success()

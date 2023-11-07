@@ -4,9 +4,11 @@ import { Table } from "antd";
 import noimg from "../../assets/img/noimg.jpeg";
 import Button from "../../Generics/Button";
 import { useQuery } from "react-query";
-// import Swal from "sweetalert2";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 const Profile = () => {
+  const tablet = useMediaQuery("(max-width: 834px)");
+
   const Swal = require("sweetalert2");
   const search = useLocation();
   const navigate = useNavigate();
@@ -19,10 +21,9 @@ const Profile = () => {
     }).then((res) => res.json());
   });
 
-
-  const forSale = (id)=>{
-    navigate(`/properties/${id}`)
-  }
+  const forSale = (id) => {
+    navigate(`/properties/${id}`);
+  };
   const columns = [
     {
       title: "Listing Title",
@@ -37,18 +38,34 @@ const Profile = () => {
             alt=""
           />
           <div className="content">
-            <ListWrap flex>
-              <ListWrap>
-                <h3>New Apartment Nice Wiew</h3>
+            <ListWrap flex tablet={tablet ? true:undefined}>
+              <ListWrap tablet={tablet ? true:undefined}>
+                <h3 className="title">
+                  New Apartment Nice <br /> Wiew
+                </h3>
                 <p className="textCard">{data.description}</p>
               </ListWrap>
-              <Button width={"71"} type={"card"} height={"23"} mt={"auto"} onclick={()=>forSale(data?.id)}>
+              <Button
+                width={"71"}
+                type={"card"}
+                height={"23"}
+                mt={"auto"}
+                position={tablet ? "absolute":undefined}
+                left={tablet? "-138":undefined}
+                onclick={() => forSale(data?.id)}
+              >
                 FORSALE
               </Button>
             </ListWrap>
-            <ListWrap>
-              <del className="textCard">{`$ ${data.price}`}</del>
-              <h3>{`$ ${data.salePrice}`}</h3>
+            <ListWrap flex>
+              <div>
+                <del className="textCard">{`$ ${data.price}`}</del>
+                <h3>{`$ ${data.salePrice}`}</h3>
+              </div>
+              <span style={!tablet ? {display:'none'} : {display:'block'}}>
+                <Icons.Edit onClick={() => navigate(`editHouse/${data?.id}`)} />
+                <Icons.Trash onClick={() => onDelete(data?.id)} />
+              </span>
             </ListWrap>
           </div>
         </ListWrap>
@@ -59,26 +76,30 @@ const Profile = () => {
       title: "Year Built",
       render: (data) => <span>{`${data.houseDetails.yearBuilt}`}</span>,
       key: "age",
+      responsive: ["sm"],
     },
     {
       title: "Address",
       dataIndex: "address",
       key: "address",
+      responsive: ["sm"],
     },
     {
       title: "Price",
       render: (data) => <span>{`$ ${data.price}`}</span>,
       key: "price",
+      responsive: ["sm"],
     },
     {
       title: "Action",
       render: (data) => (
         <span>
-          <Icons.Edit onClick ={()=> navigate(`editHouse/${data?.id}`)}/>
+          <Icons.Edit onClick={() => navigate(`editHouse/${data?.id}`)} />
           <Icons.Trash onClick={() => onDelete(data?.id)} />
         </span>
       ),
       key: "action",
+      responsive: ["sm"],
     },
   ];
 
@@ -99,23 +120,24 @@ const Profile = () => {
           method: "DELETE",
         });
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        refetch()
+        refetch();
       }
     });
-
-    
   };
 
-
   return (
-    <Container>
+    <Container key={data?.id}>
       <Content>
         <h3 className="contents">My properties</h3>
-        <Button mr={"0"} onclick={() => navigate("/profile/newhouse")}>
-          Add House
-        </Button> 
+        <Button
+          mr={"0"}
+          width={tablet && "100"}
+          onclick={() => navigate("/profile/newhouse")}
+        >
+          AddHouse
+        </Button>
       </Content>
-      <Table columns={columns} dataSource={data?.data || []} />
+      <Table columns={columns} responsive dataSource={data?.data || []} />
     </Container>
   );
 };

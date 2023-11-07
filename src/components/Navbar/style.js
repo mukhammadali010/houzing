@@ -94,7 +94,8 @@ const Links = styled(NavLink)`
   color: ${({ isActive }) => isActive && "red"};
 `;
 
-const Menu = styled(menu)``;
+const Menu = styled(menu)`
+`;
 const User = styled(user)`
   & path {
     fill: #fff;

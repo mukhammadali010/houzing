@@ -13,6 +13,9 @@ const Container = styled.div`
   border: 1px solid #e6e9ec;
   box-shadow: 0px 10px 30px rgba(13, 38, 59, 0.05);
 
+  @media (max-width:834px) {
+    padding:var(--paddingMobile);
+  }
   .contents{
    text-align:inherit;
   }
@@ -47,12 +50,13 @@ const Content = styled.div`
  .pre{
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  white-space:wrap;
-
+  justify-content: center;
   width:100%;
-  max-width: 1440px;
-  
+  div{
+    width:100%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
 }
   
 `;
@@ -98,8 +102,9 @@ cursor: pointer;
 
 
 const SelectAnt = styled(Select)`
-  width:200px;
-  margin-left:20px;
+  width:${({tablet})=>tablet ? '100%':'200px'};
+  margin-left:${({tablet})=>tablet ? '0':'20px'};
+  margin-top:${({tablet})=>tablet ? '20px':'0'};
   .ant-select-selector{
     height:44px !important;
     display: flex;
@@ -123,7 +128,7 @@ gap:24px;
 align-items:flex-start;
 justify-content: flex-start;
 flex-direction:${({section})=> section? '': 'column'};
-width:100%;
+width:fit-content;
 
 .ant-checkbox-wrapper{
   margin-left:8px;

@@ -27,10 +27,13 @@ import {
   Section,
   Wrapper,
 } from "./style";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 const HouseItem = () => {
+  const mobile = useMediaQuery("(max-width: 375px)");
+  const tablet = useMediaQuery("(max-width: 834px)");
+  const query = useMediaQuery("(max-width: 1024px)");
   let { id } = useParams();
-  console.log(id);
   const [data, setData] = useState({});
   const { city, description } = data;
   useEffect(() => {
@@ -47,87 +50,94 @@ const HouseItem = () => {
 
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState(null);
+
   const showModal = () => {
     setOpen(true);
   };
-  const handleOk = () => {
-    setModalText(
-      <Section grid>
-        {data?.attachments &&
-          data?.attachments.slice(5).map((value, index) => {
-            return <Image key={index} height={190} src={value.imgPath} />;
-          })}
-      </Section>
-    );
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setOpen(false);
-      setConfirmLoading(false);
-    }, 1000);
-  };
+
   const handleCancel = () => {
     setOpen(false);
   };
   return (
     <>
-      <Modal
-        title="the rest of the pictures"
-        open={open}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
-        onCancel={handleCancel}
-      >
-        <p>{modalText}</p>
-      </Modal>
+      {open && (
+        <Modal
+          title="the rest of the pictures"
+          open={open}
+          onOk={handleCancel}
+          footer={false}
+          confirmLoading={confirmLoading}
+          onCancel={handleCancel}
+        >
+          <Section grid>
+            {data?.attachments &&
+              data?.attachments
+                .slice(Number(mobile ? 3 : 5))
+                .map((value, index) => {
+                  return <Image key={index} height={190} src={value.imgPath} />;
+                })}
+          </Section>
+        </Modal>
+      )}
 
-      <Wrapper img>
-        <Container>
-          <Section flex>
+      <Wrapper
+        img
+        paddingMobile={query ? true : undefined}
+        align={mobile && true}
+        stlye={{ border: "2px solid yellow" }}
+      >
+        <Container >
+          <Section column={mobile ? true : undefined}>
             <Section>
               <Image
-                width={520}
-                height={400}
-                main
+                // width={mobile ? 340 : 520}
+                height={mobile ? 200 : 400}
+                width={'100%'}
+                main={'true'}
                 src={data?.attachments ? data?.attachments[0]?.imgPath : ""}
               />
             </Section>
 
-            <Section grid>
+            <Section grid tablet={tablet && !mobile}>
               {data?.attachments &&
-                data?.attachments?.slice(1, 5).map((value, index) => {
-                  return data?.attachments.length > 4 && index === 3 ? (
-                    <ImgWrap key={index}>
-                      <Blur onClick={showModal}>
-                        +{data?.attachments.length - 5}
-                      </Blur>
+                data?.attachments
+                  ?.slice(1, Number(tablet ? 3 : 5))
+                  .map((value, index) => {
+                    return data?.attachments.length > Number(tablet ? 2 : 4) &&
+                      index === Number(tablet ? 1 : 3) ? (
+                      <ImgWrap key={index}>
+                        <Blur onClick={showModal} widthMobile={mobile ? true : undefined}>
+                          +{data?.attachments.length - Number(mobile ? 3 : 5)}
+                        </Blur>
+                        <Image
+                          // width={mobile ? 160 : 250}
+                          height={mobile ? 94 : 190}
+                          width={'100%'}
+                          key={index}
+                          src={value?.imgPath}
+                        />
+                      </ImgWrap>
+                    ) : (
                       <Image
-                        width={270}
-                        height={190}
+                        // width={mobile ? 160 : 250}
+                        height={mobile ? 94 : 190}
+                        width={'100%'}
                         key={index}
                         src={value?.imgPath}
                       />
-                    </ImgWrap>
-                  ) : (
-                    <Image
-                      width={270}
-                      height={190}
-                      key={index}
-                      src={value?.imgPath}
-                    />
-                  );
-                })}
+                    );
+                  })}
             </Section>
           </Section>
         </Container>
-        <Container flex>
+        <Container flex={!tablet ? true : undefined}>
           <Container>
-            <Section>
-              <Content>
+            <Section tablet={tablet ? true: undefined}>
+              <Content >
                 <h3>{city}</h3>
                 <p>{description}</p>
               </Content>
-              <Content flex>
+              <Content flex={!tablet ? true : undefined} >
                 <div>
                   <Icons.Share />
                   <p>Share</p>
@@ -138,8 +148,8 @@ const HouseItem = () => {
                 </div>
               </Content>
             </Section>
-            <Section>
-              <Content flex icons>
+            <Section style={{ flexWrap: "wrap" }}>
+              <Content tablet flex icons>
                 <div>
                   <Icons.Beds />
                   <p className="subTitle">
@@ -236,8 +246,8 @@ const HouseItem = () => {
           </Container>
         </Container>
       </Wrapper>
-      <Wrapper>
-        <Container>
+      <Wrapper  paddingMobile={tablet ? true : undefined}>
+        <Container stlye={tablet && {padding:'0'}}>
           <h3>Documents</h3>
           <div className="down">
             <DownloadWapper>
@@ -258,9 +268,10 @@ const HouseItem = () => {
           </div>
           <Br />
         </Container>
-        <Container card className="nocard"></Container>
+        <Container card={!tablet ? true: undefined} className="nocard">
+        </Container>
       </Wrapper>
-      <Wrapper>
+      <Wrapper paddingMobile={tablet ? true: undefined}  >
         <Container>
           <h3>Location</h3>
           <div className="down">
@@ -301,7 +312,7 @@ const HouseItem = () => {
           <Schedule />
           <Reviews />
         </Container>
-        <Container card className="nocard"></Container>
+        <Container card tablet className="nocard"></Container>
       </Wrapper>
     </>
   );

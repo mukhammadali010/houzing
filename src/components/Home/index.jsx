@@ -17,7 +17,7 @@ const Home = () => {
       <Category/>
       <FarmHouse/>
       <Rent/>
-      <Testimonials/>
+      {/* <Testimonials/> */}
     </Container>  
   )
 }

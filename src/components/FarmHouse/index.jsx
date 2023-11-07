@@ -20,7 +20,7 @@ the Week's Most Popular Home</h2>
         <Button type={'primary'}>Read more</Button>
       </Content>
       <Carousel  className="carusel" >
-        <div>
+        <div className="wrapp">
             <HouseImage src={house2} />
         </div>
       </Carousel>

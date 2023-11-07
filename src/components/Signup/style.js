@@ -2,15 +2,19 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  padding: var(--padding);
+  max-width:410px;
+  /* padding: var(--padding); */
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width:834px) {
+  padding: var(--paddingMobile);
+    
+  }
 `;
 const Content = styled.div`
-  width: 580px;
+  width: 100%;
   background: #ffffff;
-  
   padding: 24px 30px;
   margin: 64px auto;
   border: 1px solid #e6e9ec;

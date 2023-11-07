@@ -2,13 +2,17 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  padding: var(--padding);
+  /* padding: var(--padding); */
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width:410px;
+  @media (max-width:834px) {
+  padding: var(--paddingMobile);
+  }
 `;
 const Content = styled.div`
-  width: 580px;
+  /* width: 100%; */
   background: #ffffff;
   padding: 24px 30px;
   margin: 64px auto;

@@ -28,6 +28,12 @@ const Content = styled.div`
   width: 100%;
   position: absolute;
   top:10px;
+  @media (max-width:375px) {
+    .contents{
+      font-size:28px; 
+      white-space:pre-wrap;
+    }
+  }
 `
 
 export { Container  ,Content};

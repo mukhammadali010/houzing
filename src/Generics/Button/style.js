@@ -49,6 +49,11 @@ const Container = styled.button`
   opacity: ${({ disabled }) => (disabled ? "0.3" : "1")};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   border-radius: 2px;
+  position:${({position})=>position? `${position}` : 'static'};
+  top:${({top})=>top? `${top}px` : ''};
+  left:${({left})=>left? `${left}px` : ''};
+  right:${({right})=>right? `${right}px` : ''};
+  bottom:${({bottom})=>bottom? `${bottom}px` : ''};
   ${getType}
 
   &:active {

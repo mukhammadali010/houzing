@@ -113,8 +113,8 @@ const Card = ({
           } } >
             <Icons.Arrow className="textCard" />
             <Icons.Love liked={data.some((value)=>{
-                    return value.id === id
-            })} />
+                    return value.id === id 
+            }).toString()} />
           </CardFooter.Like>
         </CardFooter>
       </Container>

@@ -6,7 +6,7 @@ const Properties = () => {
   const [data, setData] = useState([]);
   const { search } = useLocation();
   const navigate = useNavigate();
-  const getData=()=>{
+  const getData = () => {
     const { REACT_APP_BASE_URL: url } = process.env;
 
     fetch(`${url}/houses/list${search}`)
@@ -14,29 +14,33 @@ const Properties = () => {
       .then((res) => {
         setData(res?.data || []);
       });
-  }
+  };
   useEffect(() => {
-   getData()
+    getData();
   }, [search]);
 
   const onSelect = (id) => {
-    console.log(id);
     navigate(`/properties/${id}`);
   };
   return (
-    <Container>
-      {data.map((value) => {
-        console.log(value)
-        return (
-          <Card
-            onClick={() => onSelect(value.id)}
-            key={value.id}
-            data={value}
-            getData={getData}
-          />
-        );
-      })}
-    </Container>
+      
+      <Container>
+      {/* <div className="textpro">
+        <h3>Properties</h3>
+        <p className="textCard">112 Glenwood Ave Hyde Park, Boston, MA</p>
+      </div> */}
+      
+        {data.map((value) => {
+          return (
+            <Card
+              onClick={() => onSelect(value.id)}
+              key={value.id}
+              data={value}
+              getData={getData}
+            />
+          );
+        })}
+      </Container>
   );
 };
 

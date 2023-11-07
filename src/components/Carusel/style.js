@@ -8,8 +8,13 @@ import { ReactComponent as sq } from "../../assets/icons/resize.svg";
 const Container = styled.div`
   position: relative;
   width: 100%;
+  height:100%;
   @media (max-width: 375px) {
-    height: 100%;
+    .carusel{
+      div{
+        height:600px;
+      }
+    }
   }
 `;
 
@@ -47,14 +52,13 @@ const HouseImage = styled.img`
   width: 100%;
   height: 100%;
   @media (max-width: 375px) {
-    height: 100%;
+    height: 700px;
   }
 `;
 const Gr = styled.div`
   opacity: 0.3;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
   width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;

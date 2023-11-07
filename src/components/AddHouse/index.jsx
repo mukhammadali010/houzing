@@ -40,7 +40,7 @@ const AddHouse = () => {
       longitude: 0,
     },
    });
-  const isPageWide = useMediaQuery("(max-width: 834px)");
+  const tablet = useMediaQuery("(max-width: 834px)");
 
   const { REACT_APP_BASE_URL: url } = process.env;
   useEffect(() => {
@@ -119,7 +119,7 @@ const AddHouse = () => {
               onChange={formik.handleChange}
               typing={"login"}
               value={formik.values.country}
-              width={`${!isPageWide ? "305" : "160"}`}
+              width={`${!tablet ? "305" : ""}`}
               placeholder={"country"}
               name={"country"}
             />
@@ -128,78 +128,90 @@ const AddHouse = () => {
               onChange={formik.handleChange}
               typing={"login"}
               value={formik.values.region}
-              width={`${!isPageWide ? "250" : "160"}`}
+              width={`${!tablet ? "250" : ""}`}
               placeholder={"region"}
               name={"region"}
+              ml={tablet &&  '0'}
+
             />
             <Input
               onChange={formik.handleChange}
               typing={"login"}
               value={formik.values.city}
-              width={`${!isPageWide ? "210" : "160"}`}
+              width={`${!tablet ? "210" : ""}`}
               placeholder={"city"}
               name={"city"}
+              ml={tablet &&  '0'}
+              
             />
             <Input
               onChange={formik.handleChange}
               typing={"login"}
               value={formik.values.address}
-              width={`${!isPageWide ? "210" : "160"}`}
+              width={`${!tablet ? "210" : ""}`}
               placeholder={"address"}
               name={"address"}
+              ml={tablet &&  '0'}
+
             />
           </div>
           <div>
             <h4>Apartment info</h4>
             <Input
-              width={`${!isPageWide ? "165" : "160"}`}
+              width={`${!tablet ? "165" : ""}`}
               placeholder={"area"}
               onChange={formik.handleChange}
               value={formik.values.houseDetails.area}
               name="houseDetails.area"
               typing={"login"}
               type={"number"}
+               ml={tablet &&  '0'}
             />
             <Input
-              width={`${!isPageWide ? "110" : "160"}`}
+              width={`${!tablet ? "110" : ""}`}
               typing={"login"}
               type={"number"}
+               ml={tablet ?  '0' : ''}
               placeholder={"bath"}
               onChange={formik.handleChange}
               value={formik.values.houseDetails.bath}
               name="houseDetails.bath"
             />
             <Input
-              width={`${!isPageWide ? "110" : "160"}`}
+              width={`${!tablet ? "110" : ""}`}
               typing={"login"}
               type={"number"}
+               ml={tablet ?  '0': ''}
               placeholder={"beds"}
               onChange={formik.handleChange}
               value={formik.values.houseDetails.beds}
               name="houseDetails.beds"
             />
             <Input
-              width={`${!isPageWide ? "110" : "160"}`}
+              width={`${!tablet ? "110" : ""}`}
               typing={"login"}
               type={"number"}
+               ml={tablet &&  '0'}
               placeholder={"garage"}
               onChange={formik.handleChange}
               value={formik.values.houseDetails.garage}
               name="houseDetails.garage"
             />
             <Input
-              width={`${!isPageWide ? "110" : "160"}`}
+              width={`${!tablet ? "110" : ""}`}
               typing={"login"}
               type={"number"}
+               ml={tablet ?  '0': ''}
               placeholder={"room"}
               onChange={formik.handleChange}
               value={formik.values.houseDetails.room}
               name="houseDetails.room"
             />
             <Input
-              width={`${!isPageWide ? "110" : "160"}`}
+              width={`${!tablet ? "110" : ""}`}
               typing={"login"}
               type={"number"}
+               ml={tablet ? '0': ''}
               placeholder={"yearBuilt"}
               onChange={formik.handleChange}
               value={formik.values.houseDetails.yearBuilt}
@@ -211,16 +223,16 @@ const AddHouse = () => {
               placeholder={"Select"}
               value={formik.values.category}
               name="category"
+              tablet = {tablet ? true : false}
               onChange={(value) => {
                 formik.setFieldValue("category", value);
               }}
-              width={`${!isPageWide ? "250" : "160"}`}
             >
-              <SelectAnt.Option>Select Category</SelectAnt.Option>
-              {category.map((value) => {
+              <SelectAnt.Option value="Select Category">Select Category</SelectAnt.Option>
+              {category.map((value , index) => {
                 return (
-                  <SelectAnt.Option key={value?.id} value={value?.id}>
-                    {value?.name}
+                  <SelectAnt.Option key={index} value={value?.id}>
+                   <p> {value?.name}</p>
                   </SelectAnt.Option>
                 );
               })}
@@ -232,46 +244,51 @@ const AddHouse = () => {
               onChange={formik.handleChange}
               typing={"login"}
               value={formik.values.name}
-              width={`${!isPageWide ? "305" : "160"}`}
+              width={`${!tablet ? "305" : ""}`}
               placeholder={"name"}
               name={"name"}
+              ml={tablet ?  '0' : ''}
             />
             <Input
               onChange={formik.handleChange}
               typing={"login"}
               type={'number'}
               value={formik.values.zipCode}
-              width={`${!isPageWide ? "210" : "160"}`}
+              width={`${!tablet ? "210" : ""}`}
               placeholder={"zip_code"}
               name={"zipCode"}
+              ml={tablet &&  '0'}
             />
             <Input
               typing={"login"}
               type={"number"}
-              width={`${!isPageWide ? "170" : "160"}`}
+              width={`${!tablet ? "170" : ""}`}
               placeholder={"Min Price"}
               onChange={formik.handleChange}
               value={formik.values.price}
               name="price"
+              ml={tablet ?  '0' : ''}
             />
             <Input
               typing={"login"}
               type={"number"}
-              width={`${!isPageWide ? "170" : "160"}`}
+              width={`${!tablet ? "170" : ""}`}
               placeholder={"Max Price"}
               onChange={formik.handleChange}
               value={formik.values.salePrice}
               name="salePrice"
+              ml={tablet ?  '0' : ''}
             />
           </div>
 
           {/* adding image url */}
 
           <h3>Media</h3>
-          <Section section>
+          <Section section style={{ display:'flex', width:'100%',  justifyContent:'space-between'}}>
             <Input
               placeholder={"enter image url..."}
               typing={"login"}
+              width={""}
               mt={"0"}
               ml={"auto"}
               value={img}
@@ -279,18 +296,18 @@ const AddHouse = () => {
             />
 
             <Button
-              width={"200"}
+              width={tablet ?"100" : '200'}
               type={"button"}
               onclick={addImgs}
               disabled={imgs.length >= 10}
             >
-              Add Image
+              AddImage
             </Button>
           </Section>
           {imgs?.map((value) => {
             return (
-              <pre className="pre">
-                {value.imgPath}
+              <div className="pre">
+                <div>{value.imgPath}</div>
                 <Icons.Trash
                   onClick={() => {
                     let res = imgs.filter((vl) => {
@@ -299,7 +316,7 @@ const AddHouse = () => {
                     setImgs(res);
                   }}
                 />
-              </pre>
+              </div>
             );
           })}
           <h3>Description</h3>
@@ -314,7 +331,12 @@ const AddHouse = () => {
 
         <Content>
           <h3>Amenities</h3>
-          <Section section>
+          <Section section style={{    display: 'flex',
+    justifyContent: 'space-between',
+    margin: 'auto',
+    width:' 100%',
+    flexWrap:'wrap'
+}}>
             <Section>
               <Checkbox
                 name="homeAmenitiesDto.stop"
@@ -435,7 +457,7 @@ const AddHouse = () => {
             </Section>
           </Section>
         </Content>
-        <Button type={"submit"}  width={"280"} mr={"0"} >
+        <Button type={"submit"}  width={tablet ? '150' : "280"} mr={"0"} >
           {id ? 'Update':'Submit'}
         </Button>
       </form>

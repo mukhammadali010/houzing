@@ -11,7 +11,7 @@ import {
   Forgot,
   Remember,
   WrapperForgot,
-} from "../Signin/style";
+} from "../Signup/style";
 
 const Signup = () => {
   const [data, setData] = useState({

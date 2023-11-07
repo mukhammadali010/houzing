@@ -37,7 +37,7 @@ const Container = styled.div`
   }
   @media (max-width: 375px) {
     position: absolute;
-    top: 400px;
+    top: ${({path})=>path? '400px': '80px'};
     z-index: 10;
     background: white;
     display: flex;

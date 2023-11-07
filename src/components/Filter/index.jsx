@@ -10,16 +10,6 @@ const Filter = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const countryRef = useRef();
-  const regionRef = useRef();
-  const cityRef = useRef();
-  const zipRef = useRef();
-
-  const roomsRef = useRef();
-  const sizeRef = useRef();
-
-  const minPriceRef = useRef();
-  const maxPriceRef = useRef();
   const isPageWide = useMediaQuery("(max-width: 834px)");
   const isPageWideMobile = useMediaQuery("(max-width: 375px)");
 
@@ -63,7 +53,7 @@ const Filter = () => {
           <h4>Address</h4>
           <Input
             onChange={onChange}
-            ref={countryRef}
+            
             width={`${!isPageWide ? "200" : "160"}`}
             placeholder={"country"}
             name={"country"}
@@ -71,7 +61,7 @@ const Filter = () => {
           />
           <Input
             onChange={onChange}
-            ref={regionRef}
+            
             width={`${!isPageWide ? "200" : "160"}`}
             placeholder={"region"}
             name={"region"}
@@ -79,7 +69,7 @@ const Filter = () => {
           />
           <Input
             onChange={onChange}
-            ref={cityRef}
+            
             width={`${!isPageWide ? "200" : "160"}`}
             placeholder={"city"}
             name={"city"}
@@ -87,7 +77,7 @@ const Filter = () => {
           />
           <Input
             onChange={onChange}
-            ref={zipRef}
+            
             width={`${!isPageWide ? "200" : "160"}`}
             placeholder={"zip_code"}
             name={"zip_code"}
@@ -102,7 +92,7 @@ const Filter = () => {
         <div>
           <h4>Apartment info</h4>
           <Input
-            ref={roomsRef}
+            
             width={`${!isPageWide ? "200" : "160"}`}
             placeholder={"Rooms"}
             onChange={onChange}
@@ -110,7 +100,7 @@ const Filter = () => {
             name="room"
           />
           <Input
-            ref={sizeRef} 
+            
             width={`${!isPageWide ? "200" : "160"}`}
             placeholder={"Size"}
             onChange={onChange}
@@ -144,7 +134,7 @@ const Filter = () => {
             width={`${!isPageWide ? "200" : "160"}`}
           >
             <SelectAnt.Option value={""}>Select Category</SelectAnt.Option>
-            {data.map((value) => {
+            {data.map((value , index) => {
               return (
                 <SelectAnt.Option key={value?.id} value={value?.id}>
                   {value?.name || "no data"}
@@ -161,7 +151,7 @@ const Filter = () => {
         <div>
           <h4>Price</h4>
           <Input
-            ref={minPriceRef}
+            
             width={`${!isPageWide ? "200" : "160"}`}
             placeholder={"Min Price"}
             defaultValue={query.get("min_price")}
@@ -169,7 +159,7 @@ const Filter = () => {
             name="min_price"
           />
           <Input
-            ref={maxPriceRef}
+            
             width={`${!isPageWide ? "200" : "160"}`}
             placeholder={"Max Price"}
             onChange={onChange}
@@ -186,9 +176,10 @@ const Filter = () => {
   const onOpenChange = () => {
     setOpen(!open);
   };
-
+ 
+  
   return (
-    <Container>
+    <Container path = {location.pathname === '/home'? true: false}   >
       <Icons.House />
 
       <Input
@@ -206,14 +197,14 @@ const Filter = () => {
         trigger={"click"}
       >
         <div className="inputWrapper">
-          <Button width={"151"} type={"secondary"} padding={"12"}>
+          <Button width={'150'} type={"secondary"} padding={"12"}>
             <Icons.Setting />
             Advanced
-          </Button>
+          </Button> 
         </div>
       </Dropdown>
 
-      <Button width={`${!isPageWide ? "180" : "150"}`} padding={"12"}>
+      <Button  padding={"12"}>
         <Icons.Search />
         Search
       </Button>

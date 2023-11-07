@@ -14,7 +14,12 @@ const Button = ({
         children,
         onclick,
         success,
-        disabled
+        disabled,
+        position,
+        top,
+        left,
+        right,
+        bottom
 }) => {
 
   return (
@@ -30,6 +35,11 @@ const Button = ({
     padding ={padding}
     onClick={onclick}
     disabled={disabled}
+    position={position}
+    left={left}
+    right={right}
+    top={top}
+    bottom={bottom}
     >
      {children}
     </Container>

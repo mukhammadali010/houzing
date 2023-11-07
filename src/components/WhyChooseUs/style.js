@@ -10,7 +10,9 @@ const Container = styled.div`
   margin-top: 48px;
   padding: 48px 130px;
   @media (max-width: 375px) {
+    padding:48px 0;
     height: 100%;
+   
   }
 `;
 
@@ -21,16 +23,19 @@ const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  @media (max-width: 375px) {
-    position: absolute;
-    top: 40px;
-    transform: translate(-50%, 5%);
-  }
+
+  
   .temporary {
     margin-bottom: 30px;
     @media (max-width: 375px) {
       font-size: 28px;
+      
     }
+  }
+  @media (max-width:375px) {
+    .textCard{
+        width:300px;
+      }
   }
   .pool {
     @media (max-width: 834px) {
@@ -50,10 +55,12 @@ const Content = styled.div`
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap:wrap;
   width: 100%;
-  gap: 10px;
+  gap: 20px;
   margin-top:40px;
+ 
   `;
 Content.Blok = styled.div`
   display: flex;

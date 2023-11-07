@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import {
   Container,
   Content,
@@ -7,11 +8,15 @@ import {
 } from "./style";
 
 const Why =()=>{
+  const query = useMediaQuery("(max-width: 550px)");
+
   return (
     <Container>
       <Content>
         <h3 className="contents">Why Choose Us?</h3>
-        <p className="textCard">Nulla quis curabitur velit volutpat auctor bibendum consectetur sit. </p>
+        <p className="textCard"> {query
+            ? "112 Glenwood Ave Hyde Park, Boston, MA  ."
+            : "Nulla quis curabitur velit volutpat auctor bibendum consectetur sit"}</p>
         <Wrapper>
           <Content.Blok>
             <Icons.Beds />

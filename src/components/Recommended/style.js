@@ -15,6 +15,7 @@ padding-top:70px;
   padding: 16px ${({ padding }) => (padding ? `${padding}px` : "130px")};
   .carusel {
     margin-top:90px;
+  
     gap: 10px;
     width: 100%;
     padding-left: 10px;

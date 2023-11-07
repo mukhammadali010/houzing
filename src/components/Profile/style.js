@@ -10,21 +10,11 @@ const Container = styled.div`
   flex-direction: column;
   border: 1px solid #e6e9ec;
   box-shadow: 0px 10px 30px rgba(13, 38, 59, 0.05);
-  .wrap {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    grid-gap: 20px;
-    width: 100%;
-    max-width: 1440px;
-    padding: var(--padding);
-    @media (max-width: 1366px) {
-      padding: 5px 130px;
-    }
-    @media (max-width: 375px) {
-      padding: 5px 20px;
-      margin-top: 429px;
-    }
+  @media (max-width:834px) {
+    padding:var(--paddingMobile);
+  }
+  @media (max-width:1024px) {
+    padding:var(--paddingMobile);
   }
 `;
 const Content = styled.div`
@@ -36,6 +26,9 @@ const Content = styled.div`
  
   .contents{
     margin-right:auto;
+    @media (max-width:375px){
+      font-size:25px;
+    }
   }
 `;
 
@@ -44,12 +37,13 @@ display: ${({flex})=> flex?'flex':'block'};
 gap:${({flex})=> flex?'25px':''};
 align-items:  ${({flex})=> flex?'start':''};
 justify-content:  ${({flex})=> flex?'start':''};
+position:relative;
 
 .content{
   display: flex;
-  
   flex-direction:column;
   gap:20px;
+  flex-wrap:wrap;
 }
 .sale{
   color: var(--color-5, #FFF);
